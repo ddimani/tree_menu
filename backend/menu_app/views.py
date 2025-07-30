@@ -6,6 +6,7 @@ from .models import MenuItem
 class IndexPageView(TemplateView):
     template_name = "index.html"
 
+
 class MenuItemDetailView(TemplateView):
     model = MenuItem
     template_name = "menu_item_detail.html"

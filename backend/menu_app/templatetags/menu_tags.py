@@ -6,6 +6,7 @@ from menu_app.models import MenuItem
 
 register = template.Library()
 
+
 @register.simple_tag(takes_context=True)
 def draw_menu(context, menu_name):
     item_path = context.get('item_path')
@@ -27,7 +28,8 @@ def draw_menu(context, menu_name):
 
     for slug in path_slugs:
         match = next(
-            (item for item in children_map[current_parent] if item.slug == slug),
+            (item for item in children_map[current_parent] if item.slug == slug
+             ),
             None
         )
         if not match:
@@ -52,7 +54,10 @@ def draw_menu(context, menu_name):
         for item in children_map.get(parent_id, []):
             is_expanded = item in active_items
             class_attr = ' class="expanded"' if is_expanded else ''
-            html += f'<li{class_attr}><a href="{get_url(item)}">{item.title}</a>'
+            html += (
+                f'<li{class_attr}><a '
+                f'href="{get_url(item)}">{item.title}</a>'
+            )
             if is_expanded and children_map.get(item.id):
                 html += render(item.id)
             html += '</li>'
