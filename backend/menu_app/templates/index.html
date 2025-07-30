@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load menu_tags %}
+
+{% block content %}
+    <h1>Меню: {{ 'tree' }}</h1>
+    {% draw_menu 'tree' %}
+
+    <h1>Меню: {{ 'main' }}</h1>
+    {% draw_menu 'main' %}
+{% endblock %}

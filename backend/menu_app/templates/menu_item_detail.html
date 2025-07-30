@@ -1,0 +1,30 @@
+{% load menu_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ object.title }}</title>
+    <style>
+        .active > a {
+            font-weight: bold;
+            color: red;
+        }
+
+        .expanded > ul {
+            display: block;
+        }
+        .expanded {
+            color: green;
+        }
+
+        .collapsed > ul {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ menu_name }}</h1>
+    {% draw_menu menu_name %}
+    <a href="{% url 'menu_app:menu_display'%}">Вернуться к меню</a>
+</body>
+</html>
